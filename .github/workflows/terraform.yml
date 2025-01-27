@@ -24,28 +24,26 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
-    defaults:
-      run:
-        shell: bash
-
     steps:
-    - name: Checkout Repository
+    - name: Checkout
       uses: actions/checkout@v3
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: '1.5.0'
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
 
     - name: Terraform Init
       id: init
-      run: terraform init # -input=false
+      run: terraform init
 
     - name: Terraform Format
       id: fmt
