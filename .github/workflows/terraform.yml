@@ -28,6 +28,7 @@ jobs:
     - name: Install Azure CLI
       run: |
         curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        az --version
 
     - name: 'Terraform Format'
       uses: hashicorp/terraform-github-actions@master
