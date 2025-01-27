@@ -10,5 +10,4 @@ resource "azurerm_resource_group" "rg" {
     Location = "germanywestcentral"
     Owner    = "Olad, Koosha"
   }
-  
 }
