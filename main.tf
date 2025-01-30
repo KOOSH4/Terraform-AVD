@@ -21,10 +21,11 @@ provider "azurerm" {
 
   use_oidc = true
 }
-
-# Define any Azure resources to be created here. A simple resource group is shown here as a minimal example.
-resource "azurerm_resource_group" "rg-aks" {
-  name     = var.resource_group_name
+# This resource block defines an Azure Resource Group named "rg-AVD-int-dewc-1".
+# The location of the resource group is specified by the variable "var.location".
+# Tags are added to the resource group for identification, including the location "germanywestcentral" and the owner "Olad, Koosha".
+resource "azurerm_resource_group" "rg-avd" {
+  name     = "rg-AVD-int-dewc-1"
   location = var.location
   tags = {
     Location = "germanywestcentral"
