@@ -28,9 +28,9 @@ provider "azurerm" {
 # in the location specified by the variable 'var.location'. The resource group
 # is tagged with the location "germanywestcentral" and the owner "Olad, Koosha".
 
-resource "azurerm_resource_group" "rg-aks" { 
+resource "azurerm_resource_group" "rg-aks" {
   name     = "rg-AVD-int-dewc-1"
-  location = var.location 
+  location = var.location
   tags = {
     Location = "germanywestcentral"
     Owner    = "Olad, Koosha"
