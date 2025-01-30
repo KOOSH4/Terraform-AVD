@@ -15,21 +15,16 @@ terraform {
     use_oidc             = true
   }
 }
-# This block configures the Azure Resource Manager (azurerm) provider for Terraform.
-# The 'features' block is required but can be left empty.
-# The 'use_oidc' attribute is set to true to enable OpenID Connect (OIDC) authentication.
 
 provider "azurerm" {
   features {}
 
   use_oidc = true
 }
-# This resource block defines an Azure Resource Group named "rg-AVD-int-dewc-1"
-# in the location specified by the variable 'var.location'. The resource group
-# is tagged with the location "germanywestcentral" and the owner "Olad, Koosha".
 
+# Define any Azure resources to be created here. A simple resource group is shown here as a minimal example.
 resource "azurerm_resource_group" "rg-aks" {
-  name     = "rg-AVD-int-dewc-1"
+  name     = var.resource_group_name
   location = var.location
   tags = {
     Location = "germanywestcentral"
