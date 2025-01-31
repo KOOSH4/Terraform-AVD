@@ -28,7 +28,7 @@ provider "azurerm" {
 # This resource block defines an Azure Resource Group named "rg-AVD-int-dewc-1"
 # in the location specified by the variable 'var.location'. The resource group
 # is tagged with the location "germanywestcentral" and the owner "Olad, Koosha".
-resource "azurerm_resource_group" "rg-aks" {
+resource "azurerm_resource_group" "rg-avd" {
   name     = var.resource_group_name
   location = var.location
   tags = {
@@ -36,3 +36,4 @@ resource "azurerm_resource_group" "rg-aks" {
     Owner    = "Olad, Koosha"
   }
 }
+
