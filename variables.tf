@@ -14,5 +14,5 @@ variable "host_pool_type" {
 variable "load_balancer_type" {
   description = "Session distribution method (BreadthFirst/DepthFirst)"
   type        = string
-  default     = "DepthFirst"  # Updated to DepthFirst per your requirement
+  default     = "DepthFirst" # Updated to DepthFirst per your requirement
 }

@@ -6,8 +6,8 @@ terraform {
     }
   }
 
-# It specifies the resource group, storage account, container, and key for storing the Terraform state file.
-# The use_oidc parameter is set to true to enable OpenID Connect (OIDC) authentication for secure access.
+  # It specifies the resource group, storage account, container, and key for storing the Terraform state file.
+  # The use_oidc parameter is set to true to enable OpenID Connect (OIDC) authentication for secure access.
   backend "azurerm" {
     resource_group_name  = "rg-AVD-int-dewc-1"
     storage_account_name = "stavdtfdewc1"
@@ -44,7 +44,7 @@ resource "azurerm_virtual_desktop_application_group" "avd_app_group" {
   name                = "appGrp-AVD-dewc-1"
   location            = azurerm_resource_group.rg-avd.location
   resource_group_name = azurerm_resource_group.rg-avd.name
-  type                = "Desktop"  # Options: "Desktop" or "RemoteApp"
+  type                = "Desktop" # Options: "Desktop" or "RemoteApp"
   host_pool_id        = azurerm_virtual_desktop_host_pool.avd_host_pool.id
 }
 
@@ -52,5 +52,5 @@ resource "azurerm_virtual_desktop_application_group" "avd_app_group" {
 # The association links the specified application group to the specified workspace, enabling the applications in the group to be accessible through the workspace.
 resource "azurerm_virtual_desktop_workspace_application_group_association" "avd_association" {
   workspace_id         = azurerm_virtual_desktop_workspace.avd_workspace.id
-  application_group_id = azurerm_virtual_desktop_application_group.avd_app_group.id  # Link to App Group
+  application_group_id = azurerm_virtual_desktop_application_group.avd_app_group.id # Link to App Group
 }
