@@ -36,21 +36,3 @@ resource "azurerm_resource_group" "rg-aks" {
     Owner    = "Olad, Koosha"
   }
 }
-
-# This block defines a resource for creating an Azure Virtual Desktop application group.
-# The application group is named "avd-app-group" and is located in the same location as the specified resource group.
-# It is associated with a host pool and can be of type "Desktop" or "RemoteApp".
-resource "azurerm_virtual_desktop_application_group" "avd_app_group" {
-  name                = "appGrp-AVD-dewc-1"
-  location            = azurerm_resource_group.rg-avd.location
-  resource_group_name = azurerm_resource_group.rg-avd.name
-  type                = "Desktop" # Options: "Desktop" or "RemoteApp"
-  host_pool_id        = azurerm_virtual_desktop_host_pool.avd_host_pool.id
-}
-
-# This block defines a resource for associating an Azure Virtual Desktop application group with a workspace.
-# The association links the specified application group to the specified workspace, enabling the applications in the group to be accessible through the workspace.
-resource "azurerm_virtual_desktop_workspace_application_group_association" "avd_association" {
-  workspace_id         = azurerm_virtual_desktop_workspace.avd_workspace.id
-  application_group_id = azurerm_virtual_desktop_application_group.avd_app_group.id # Link to App Group
-}
